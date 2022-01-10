@@ -1,5 +1,6 @@
 # pytorch_fm.etc
-fm,ffm,Deepfm,afi,dcap.etc' implements by pytorch\n
+fm,ffm,Deepfm,afi,dcap.etc' implements by pytorch
+
 first step: pip install -r requirements.txt
 second step: Create a new folder to save the model，please input the command: mkdir chkpt, 
 third step: I only use the ml-1m dataset for training and testing

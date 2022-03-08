@@ -52,7 +52,7 @@ def get_activation_fn(activation: str):
         return torch.tanh
     elif activation == "linear":
         return lambda x: x
-    elif activation == 'dice':
+    elif activation == "dice":
         assert dice_dim
         return Dice(hidden_size, dice_dim)
     else:

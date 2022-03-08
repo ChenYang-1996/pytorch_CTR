@@ -1,4 +1,5 @@
-# pytorch_fm.etc
+# pytorch_CTR
+
 fm,ffm,Deepfm,afi,dcap.etc' implements by pytorch
 
 1th step: pip install -r requirements.txt

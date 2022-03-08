@@ -2,6 +2,10 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 from .attention_layer import MultiheadAttentionInnerProduct
+import math
+import torch
+import torch.nn as nn
+from .activation import activation_layer
 
 class FeaturesLinear(torch.nn.Module):
 

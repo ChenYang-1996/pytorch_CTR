@@ -1,13 +1,15 @@
 # pytorch_fm.etc
 fm,ffm,Deepfm,afi,dcap.etc' implements by pytorch
 
-First step: pip install -r requirements.txt
+1th step: pip install -r requirements.txt
 
-Second step: put the dataset to the /torchfm/dataset
+2th step: put the dataset to the /torchfm/dataset
 
-Third step: Create a new folder to save the model，please input the command: mkdir chkpt
+3th step: Create a new folder to save the model，please input the command: mkdir chkpt
 
-Fourth step: If you want see the loss and acc, please input the command: mkdir logs, and then tensorboard --logdir=logs
+4th step: if you want train your model, please run the example/main.py 
+
+5th step: If you want see the loss and acc, please input the command: mkdir logs, and then tensorboard --logdir=logs
 
 worth that: I only use the ml-1m dataset for training and testing
 

@@ -1,8 +1,40 @@
 # pytorch_CTR
 
+afi.py
 
+afm.py
 
-fm,ffm,Deepfm,afi,dcap.etc' implements by pytorch
+afn.py
+
+dcap.py
+
+dcn.py
+
+dfm.py
+
+ffm.py
+
+fm.py
+
+fnfm.py
+
+fnn.py
+
+hofm.py
+
+lr.py
+
+ncf.py
+
+nfm.py
+
+pnn.py
+
+wd.py
+
+xdfm.py
+
+all models implemented by pytorch
 
 1th step: pip install -r requirements.txt
 

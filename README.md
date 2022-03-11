@@ -1,41 +1,12 @@
 pytorch_CTR,all models implemented by 'pytorch'
 ===
-| 内容 | 内容 |
+| 模型 | 模型图链接 |
 | ------ | ------ |
-| 内容 | 内容 |
-afi.py
-
-afm.py
-
-afn.py
-
-dcap.py
-
-dcn.py
-
-dfm.py
-
-ffm.py
-
-fm.py
-
-fnfm.py
-
-fnn.py
-
-hofm.py
-
-lr.py
-
-ncf.py
-
-nfm.py
-
-pnn.py
-
-wd.py
-
-xdfm.py
+| FM | 内容 |
+| FFM | 内容 |
+| DCN | 内容 |
+| WD | 内容 |
+| DCAP | 内容 |
 
 1th step: pip install -r requirements.txt
 --

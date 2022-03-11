@@ -8,7 +8,7 @@ DIN,DIEN,CAN will be added soon!
 | DCN | ![image](https://user-images.githubusercontent.com/53995142/157873085-81734661-4446-4eea-890a-ec727db512fd.png) |
 | W&D | ![image](https://user-images.githubusercontent.com/53995142/157873175-99764297-86ac-4e29-9558-4adf3e9bfa31.png) |
 | DeepFM |![image](https://user-images.githubusercontent.com/53995142/157873272-8f20c240-5f4a-477c-99e8-e3441030c6d3.png) |
-| DCAP | ![image](https://user-images.githubusercontent.com/53995142/157872865-2a897619-2893-4a8c-8590-51b35f1d21a8.png) |
+| DCAP(CIKM2021) | ![image](https://user-images.githubusercontent.com/53995142/157872865-2a897619-2893-4a8c-8590-51b35f1d21a8.png) |
 
 1th step: pip install -r requirements.txt
 --

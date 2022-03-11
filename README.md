@@ -1,5 +1,8 @@
 pytorch_CTR,all models implemented by 'pytorch'
 ===
+| 内容 | 内容 |
+| ------ | ------ |
+| 内容 | 内容 |
 afi.py
 
 afm.py
@@ -46,11 +49,11 @@ xdfm.py
 --
 worth that: I only use the ml-1m dataset for training and testing
 
-m1-1m download link: 'https://pan.baidu.com/s/12_LdFDwAp7qpbN9Pl4odHw?pwd=1234' 提取码：1234 
+m1-1m download link: https://pan.baidu.com/s/12_LdFDwAp7qpbN9Pl4odHw?pwd=1234 提取码：1234 
 
-m1-20m download link:：'https://pan.baidu.com/s/1FvCB0oZs0kF-vksNzFiczQ?pwd=1234' 提取码：1234 
+m1-20m download link:：https://pan.baidu.com/s/1FvCB0oZs0kF-vksNzFiczQ?pwd=1234 提取码：1234 
 
-Criteo download link：'https://pan.baidu.com/s/1DCzyUTqNUZuplcIrIeC71g?pwd=1234' 提取码：1234 
+Criteo download link：https://pan.baidu.com/s/1DCzyUTqNUZuplcIrIeC71g?pwd=1234 提取码：1234 
 
 fixed by https://github.com/zachstarkk/DCAP and https://github.com/rixwew/pytorch-fm
 

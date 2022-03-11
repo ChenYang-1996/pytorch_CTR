@@ -185,7 +185,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--dataset_name', default='movielens1M')
     #parser.add_argument('--dataset_path', help='criteo/train.txt, avazu/train, or ml-1m/ratings.dat')
-    parser.add_argument('--dataset_path', default='../torchfm/dataset/ml-1m/ratings.dat')
+    parser.add_argument('--dataset_path', default='../pytorch_CTR/dataset/ml-1m/ratings.dat')
     parser.add_argument('--model_name', default='dcap')
     parser.add_argument('--epoch', type=int, default=100)
     parser.add_argument('--learning_rate', type=float, default=0.001)

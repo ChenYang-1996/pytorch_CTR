@@ -1,6 +1,6 @@
 pytorch_CTR,all models implemented by 'pytorch'
 ===
-| 模型 | 模型图链接 |
+| 模型 | 网络结构 |
 | ------ | ------ |
 | FM | 内容 |
 | FFM | 内容 |

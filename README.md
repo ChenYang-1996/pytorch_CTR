@@ -1,9 +1,9 @@
 pytorch_CTR,all models implemented by 'pytorch'
 ===
-| 模型 | 网络结构 |
+| 模型 | 创新点 |
 | ------ | ------ |
-| FM | 内容 |
-| FFM | 内容 |
+| FM | 将二阶交叉特征考虑进来，提高模型的表达能力；引入隐向量，缓解了数据稀疏带来的参数难训练问题；模型复杂度为线性 |
+| FFM | FFM在FM的基础上进一步改进，在模型中引入类别（field）的概念，将同一个field的特征单独进行one-hot |
 | DCN | 内容 |
 | WD | 内容 |
 | DCAP | 内容 |

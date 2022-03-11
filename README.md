@@ -1,4 +1,4 @@
-pytorch_CTR,all models implemented by 'pytorch'
+pytorch_CTR, all models implemented by pytorch
 ===
 DIN,DIEN,CAN will be added soon!
 | 模型 | 创新点 |

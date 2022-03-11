@@ -1,5 +1,6 @@
 pytorch_CTR,all models implemented by 'pytorch'
 ===
+DIN,DIEN,CAN will be added soon!
 | 模型 | 创新点 |
 | ------ | ------ |
 | FM | 将二阶交叉特征考虑进来，提高模型的表达能力；引入隐向量，缓解了数据稀疏带来的参数难训练问题；模型复杂度为线性 |

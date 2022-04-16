@@ -1,7 +1,10 @@
 import torch
 import tqdm
+import numpy as np
 from sklearn.metrics import roc_auc_score
 from torch.utils.data import DataLoader
+from tensorboardX import SummaryWriter
+writer = SummaryWriter('../logs')
 
 from torchfm.dataset.avazu import AvazuDataset
 from torchfm.dataset.criteo import CriteoDataset
@@ -23,6 +26,7 @@ from torchfm.model.wd import WideAndDeepModel
 from torchfm.model.xdfm import ExtremeDeepFactorizationMachineModel
 from torchfm.model.afn import AdaptiveFactorizationNetwork
 from torchfm.model.dcap import DeepCrossAttentionalProductNetwork
+from torchfm.model.dcnv2 import DeepCrossNetv2
 
 def get_dataset(name, path):
     if name == 'movielens1M':
@@ -41,7 +45,7 @@ def get_model(name, dataset):
     """
     Hyperparameters are empirically determined, not opitmized.
     """
-    field_dims = dataset.field_dims
+    field_dims = dataset.field_dims #一个样本有两个离散特征【职业，省份】，第一个特征种类有10种，第二个特征种类有20种。于是field_dims=[10, 20]
     if name == 'lr':
         return LogisticRegressionModel(field_dims)
     elif name == 'fm':
@@ -88,6 +92,10 @@ def get_model(name, dataset):
         print("Model:DCAP")
         return DeepCrossAttentionalProductNetwork(
             field_dims, embed_dim=16, num_heads=2, num_layers=3, mlp_dims=(400, 400), dropouts=(0.1, 0.1))
+    elif name == 'dcnv2':
+        print("Model:DCNV2")
+        return DeepCrossNetv2(
+            feature_fields=field_dims, embed_dim=16, layer_num=3, mlp_dims=(400, 400))
     else:
         raise ValueError('unknown model name: ' + name)
 
@@ -128,7 +136,7 @@ def train(model, optimizer, data_loader, criterion, device, log_interval=100):
         if (i + 1) % log_interval == 0:
             tk0.set_postfix(loss=total_loss / log_interval)
             total_loss = 0
-
+    return total_loss #yc
 
 def test(model, data_loader, device):
     model.eval()
@@ -140,7 +148,6 @@ def test(model, data_loader, device):
             targets.extend(target.tolist())
             predicts.extend(y.tolist())
     return roc_auc_score(targets, predicts)
-
 
 def main(dataset_name,
          dataset_path,
@@ -161,17 +168,21 @@ def main(dataset_name,
     test_length = len(dataset) - train_length - valid_length
     train_dataset, valid_dataset, test_dataset = torch.utils.data.random_split(
         dataset, (train_length, valid_length, test_length))
-    train_data_loader = DataLoader(train_dataset, batch_size=batch_size, num_workers=8)
-    valid_data_loader = DataLoader(valid_dataset, batch_size=batch_size, num_workers=8)
-    test_data_loader = DataLoader(test_dataset, batch_size=batch_size, num_workers=8)
+    train_data_loader = DataLoader(train_dataset, batch_size=batch_size, num_workers=6) #num_workers=8
+    valid_data_loader = DataLoader(valid_dataset, batch_size=batch_size, num_workers=6) #num_workers=8
+    test_data_loader = DataLoader(test_dataset, batch_size=batch_size, num_workers=6) #num_workers=8
     model = get_model(model_name, dataset).to(device)
     criterion = torch.nn.BCELoss()
     optimizer = torch.optim.Adam(params=model.parameters(), lr=learning_rate, weight_decay=weight_decay)
-    early_stopper = EarlyStopper(num_trials=2, save_path=f'{save_dir}/{dataset_name}/{model_name}.pt') #2
+    early_stopper = EarlyStopper(num_trials=2, save_path=f'{save_dir}/{model_name}_{dataset_name}.pt') #2
     for epoch_i in range(epoch):
-        train(model, optimizer, train_data_loader, criterion, device)
+        #train(model, optimizer, train_data_loader, criterion, device)
+        loss = train(model, optimizer, train_data_loader, criterion, device) #yc
         auc = test(model, valid_data_loader, device)
+        print('epoch:', epoch_i, 'training loss:', loss)
         print('epoch:', epoch_i, 'validation: auc:', auc)
+        writer.add_scalar('loss', scalar_value=int(loss), global_step=epoch_i)
+        writer.add_scalar('acc', scalar_value=auc, global_step=epoch_i)
         if not early_stopper.is_continuable(model, auc):
             print(f'validation: best auc: {early_stopper.best_accuracy}')
             break
@@ -179,17 +190,18 @@ def main(dataset_name,
     print(f'test auc: {auc}')
 
 
+
 if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--dataset_name', default='movielens1M')
+    parser.add_argument('--dataset_name', default='movielens20M')
     #parser.add_argument('--dataset_path', help='criteo/train.txt, avazu/train, or ml-1m/ratings.dat')
-    parser.add_argument('--dataset_path', default='../pytorch_CTR/dataset/ml-1m/ratings.dat')
-    parser.add_argument('--model_name', default='dcap') #you can choose any models
+    parser.add_argument('--dataset_path', default='../torchfm/dataset/ml-20m/ratings.csv')
+    parser.add_argument('--model_name', default='dien') ##########
     parser.add_argument('--epoch', type=int, default=100)
     parser.add_argument('--learning_rate', type=float, default=0.001)
-    parser.add_argument('--batch_size', type=int, default=2048)
+    parser.add_argument('--batch_size', type=int, default=128) #2048
     parser.add_argument('--weight_decay', type=float, default=1e-6)
     parser.add_argument('--device', default='cuda:0')
     parser.add_argument('--save_dir', default='../chkpt')

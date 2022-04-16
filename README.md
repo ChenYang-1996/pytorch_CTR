@@ -1,6 +1,6 @@
 pytorch_CTR, all models implemented by pytorch
 ===
-DIN, DIEN, CAN will be added soon!
+DIN， DIEN, CAN(comming soon) belong to user-behavior sequence model，you should run with sequence_model.py  
 | 模型 | 创新点 |
 | ------ | ------ |
 | FM | 将二阶交叉特征考虑进来，提高模型的表达能力；引入隐向量，缓解了数据稀疏带来的参数难训练问题；模型复杂度为线性 |
@@ -8,7 +8,8 @@ DIN, DIEN, CAN will be added soon!
 | DCN | ![image](https://user-images.githubusercontent.com/53995142/158001857-571f1289-10cb-4b80-9230-edd4d4de5459.png) |
 | W&D | ![image](https://user-images.githubusercontent.com/53995142/157873175-99764297-86ac-4e29-9558-4adf3e9bfa31.png) |
 | DeepFM |![image](https://user-images.githubusercontent.com/53995142/157873272-8f20c240-5f4a-477c-99e8-e3441030c6d3.png) |
-| DCAP(CIKM2021) | ![image](https://user-images.githubusercontent.com/53995142/157872865-2a897619-2893-4a8c-8590-51b35f1d21a8.png) |
+| DCAP(CIKM2021) | ![image](https://user-images.githubusercontent.com/53995142/157872865-2a897619-2893-4a8c-8590-51b35f1d21a8.png) |  
+| DIN/DIEN | user-behavior sequence model |
 
 1th step: pip install -r requirements.txt
 --
@@ -16,7 +17,7 @@ DIN, DIEN, CAN will be added soon!
 --
 3th step: Create a new folder to save the model，please input the command: mkdir chkpt
 --
-4th step: if you want train your model, please run the example/main.py 
+4th step: if you want train your model, please run the example/main.py or example/sequence_model.py
 --
 5th step: If you want see the loss and acc, please input the command: mkdir logs, and then tensorboard --logdir=logs
 --
